@@ -1,4 +1,4 @@
-# Sprint Project 2 – Home Credit Default Risk
+#  Home Credit Default Risk
 
 ## 📌 Project Overview
 
