@@ -1,108 +1,60 @@
-#  Home Credit Default Risk
+> Home Credit Default Risk
 
-## 📌 Project Overview
+## The Business problem
 
-This project focuses on predicting **Credit Default Risk**, i.e., whether a customer applying for a home loan will be able to repay their debt or not.  
-The work is based on the **Home Credit Default Risk** Kaggle competition and uses real-world financial data provided by **Home Credit Group**, a leading financial institution specializing in home credit.
+This is a binary Classification task: we want to predict whether the person applying for a home credit will be able to repay their debt or not. Our model will have to predict a 1 indicating the client will have payment difficulties: he/she will have late payment of more than X days on at least one of the first Y installments of the loan in our sample, 0 in all other cases.
 
-The project applies **data analysis techniques** and **machine learning concepts** to build an end-to-end pipeline for preprocessing, modeling, hyperparameter tuning, and prediction.
+We will use [Area Under the ROC Curve](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es_419) as the evaluation metric, so our models will have to return the probabilities that a loan is not paid for each input data.
 
----
+## About the data
 
-## 🎯 Business Goals
+The original dataset is composed of multiple files with different information about loans taken. In this project, we will work exclusively with the primary files: `application_train_aai.csv` and `application_test_aai.csv`.
 
-- Understand how **Credit Default Risk** can be formulated as a **Machine Learning classification problem**.
-- Build a model to predict whether a client will **repay or default** on a loan.
-- Expand domain knowledge in **finance and credit risk assessment**.
+You don't have to worry about downloading the data, it will be automatically downloaded from the `AnyoneAI - Sprint Project 02.ipynb` notebook in `Section 1 - Getting the data`.
 
----
+## Technical aspects
 
-## 🧠 What You Will Learn
+To develop this Machine Learning model you will have to primary interact with the Jupyter notebook provided, called `AnyoneAI - Sprint Project 02.ipynb`. This notebook will guide you through all the steps you have to follow and the code you have to complete in the different parts of the project, also marked with a `TODO` comment.
 
-- Feature engineering and feature selection for tabular data.
-- Handling large datasets with thousands of rows and many features.
-- Building and evaluating machine learning models for binary classification.
-- Interpreting model results and evaluation metrics.
-- Using **AUC-ROC** as a key performance metric.
-- Hyperparameter tuning using **Cross Validation**.
-- Creating end-to-end **ML pipelines**.
-- Achieving competitive performance using **model ensembles**.
+The technologies involved are:
+- Python as the main programming language
+- Pandas for consuming data from CSVs files
+- Scikit-learn for building features and training ML models
+- Matplotlib and Seaborn for the visualizations
+- Jupyter notebooks to make the experimentation in an interactive way
 
----
+## Installation
 
-## 📊 Dataset Description
+A `requirements.txt` file is provided with all the needed Python libraries for running this project. For installing the dependencies just run:
 
-- Data source: **Home Credit Group**
-- Each row represents **one loan application**
-- Features include:
-  - Client demographic information
-  - Financial and credit history data
-  - Loan-related attributes
-- Target variable:
-  - Binary label indicating whether the client **defaulted (1)** or **repaid (0)** the loan
+```console
+$ pip install -r requirements.txt
+```
 
-⚠️ **Note:** The training dataset must be removed from the `dataset/` folder before submission.
+*Note:* We encourage you to install those inside a virtual environment.
 
----
+## Code Style
 
-## 🛠️ Technical Objectives
+Following a style guide keeps the code's aesthetics clean and improves readability, making contributions and code reviews easier. Automated Python code formatters make sure your codebase stays in a consistent style without any manual work on your end. If adhering to a specific style of coding is important to you, employing an automated to do that job is the obvious thing to do. This avoids bike-shedding on nitpicks during code reviews, saving you an enormous amount of time overall.
 
-- Perform **Exploratory Data Analysis (EDA)**
-- Apply **data preprocessing techniques**, including:
-  - Feature selection
-  - Outlier detection and handling
-  - Missing value imputation
-  - Normalization / standardization
-  - Categorical feature encoding
-- Train and compare machine learning models:
-  - Logistic Regression (baseline)
-  - Random Forest Classifier
-  - LightGBM (optional)
-- Perform **hyperparameter search** using Cross Validation
-- Evaluate models using **AUC-ROC**
-- Analyze and interpret model results
+We use [Black](https://black.readthedocs.io/) and [isort](https://pycqa.github.io/isort/) for automated code formatting in this project, you can run it with:
 
----
+```console
+$ isort --profile=black . && black --line-length 88 .
+```
 
-## 🧩 Project Workflow
+Wanna read more about Python code style and good practices? Please see:
+- [The Hitchhiker’s Guide to Python: Code Style](https://docs.python-guide.org/writing/style/)
+- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 
-1. Obtain and load the data  
-2. Perform Exploratory Data Analysis (EDA)  
-3. Data preprocessing:
-   - Feature selection
-   - Outlier handling
-   - Imputation, normalization, and encoding
-4. Train a **baseline Logistic Regression model**
-5. Train a **Random Forest Classifier**
-6. Perform **Randomized Hyperparameter Search with Cross Validation**
-7. Analyze and compare model performance
-8. *(Optional)* Train LightGBM models and use pipelines
-9. *(Optional)* Build custom models and engineered features
+## Tests
 
----
+We provide unit tests along with the project that you can run and check from your side the code meets the minimum requirements of correctness needed to approve. To run just execute:
 
-## 🧪 Models Used
+```console
+$ pytest tests/
+```
 
-- **Logistic Regression** (baseline model)
-- **Random Forest Classifier**
-- **LightGBM** *(optional / advanced)*
-
----
-
-## 📐 Evaluation Metric
-
-- **AUC-ROC (Area Under the Receiver Operating Characteristic Curve)**  
-  Used to evaluate the performance of binary classification models, especially useful for imbalanced datasets.
-
----
-
-## 💻 Working Environment
-
-Recommended setup:
-
-- Python **3.9**
-- Virtual environment
-- VS Code (or similar IDE)
-- Install dependencies:
-  ```bash
-  pip install -r requirements.txt
+If you want to learn more about testing Python code, please read:
+- [Effective Python Testing With Pytest](https://realpython.com/pytest-python-testing/)
+- [The Hitchhiker’s Guide to Python: Testing Your Code](https://docs.python-guide.org/writing/tests/)
